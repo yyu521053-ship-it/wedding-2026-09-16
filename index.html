@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#681323" />
+    <meta name="description" content="于清旭与成冰冰的婚礼邀请｜2026年9月16日" />
+    <meta property="og:title" content="良缘启程｜于清旭 & 成冰冰" />
+    <meta property="og:description" content="诚邀您见证我们的婚礼任务｜2026年9月16日" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/share-cover.jpg" />
+    <title>良缘启程｜于清旭 & 成冰冰</title>
+    <link rel="icon" type="image/webp" href="assets/images/cat.webp" />
+    <link rel="preload" href="assets/images/stage.webp" as="image" type="image/webp" />
+    <link rel="preload" href="assets/images/couple.webp" as="image" type="image/webp" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="app" id="app" aria-busy="true">
+      <div class="preloader" id="preloader" role="status" aria-live="polite">
+        <div class="loader-card pixel-panel">
+          <p class="loader-title">婚礼任务加载中</p>
+          <div class="loader-track" aria-hidden="true">
+            <span id="loaderBar"></span>
+          </div>
+          <p class="loader-value" id="loaderValue">0%</p>
+        </div>
+      </div>
+
+      <header class="topbar" aria-label="请帖控制">
+        <div class="page-indicator" id="pageIndicator" aria-label="当前页面">
+          <span class="is-current"></span><span></span><span></span><span></span>
+        </div>
+        <button class="music-toggle" id="musicToggle" type="button" aria-label="播放音乐" aria-pressed="false">
+          <span class="music-icon" aria-hidden="true">♪</span>
+          <span class="music-label">音乐</span>
+        </button>
+      </header>
+
+      <main class="screens" id="screens">
+        <section class="screen is-active" data-screen="0" aria-labelledby="introTitle">
+          <div class="scene-shade"></div>
+          <div class="particles" aria-hidden="true"></div>
+          <div class="intro-content screen-content">
+            <p class="eyebrow">WEDDING QUEST · 2026</p>
+            <h1 class="hero-title" id="introTitle">良 缘 启 程</h1>
+
+            <div class="character-stage" aria-label="于清旭与成冰冰的像素角色">
+              <div class="couple-character">
+                <img src="assets/images/couple.webp" alt="于清旭与成冰冰的像素婚礼角色" />
+              </div>
+              <div class="cat-character cat-peek" aria-hidden="true">
+                <img src="assets/images/cat.webp" alt="" />
+              </div>
+            </div>
+
+            <div class="dialogue pixel-panel">
+              <p class="dialogue-main">即将新婚的夫妇出现了！</p>
+              <p>请问您是否出席<br /><strong>于清旭与成冰冰</strong>的婚礼？</p>
+            </div>
+
+            <button class="game-button game-button--primary" id="startButton" type="button">
+              <span>开启婚礼任务</span>
+              <span class="button-spark" aria-hidden="true">✦</span>
+            </button>
+            <p class="gesture-hint">点击开启音乐与请帖</p>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="1" aria-labelledby="questTitle" aria-hidden="true">
+          <div class="scene-shade scene-shade--strong"></div>
+          <div class="particles" aria-hidden="true"></div>
+          <div class="screen-content quest-content">
+            <p class="eyebrow">QUEST INFORMATION</p>
+            <h2 class="section-title" id="questTitle">任 务 介 绍</h2>
+
+            <div class="quest-card pixel-panel">
+              <div class="mini-portrait" aria-hidden="true">
+                <img src="assets/images/couple.webp" alt="" />
+              </div>
+              <dl class="quest-list">
+                <div>
+                  <dt>新人 NPC</dt>
+                  <dd>于清旭 <span>&</span> 成冰冰</dd>
+                </div>
+                <div>
+                  <dt>任务日期</dt>
+                  <dd>2026年09月16日</dd>
+                </div>
+                <div>
+                  <dt>宾客到场</dt>
+                  <dd>11:00</dd>
+                </div>
+                <div>
+                  <dt>婚礼开始</dt>
+                  <dd>12:00</dd>
+                </div>
+                <div>
+                  <dt>任务坐标</dt>
+                  <dd>河南省新乡市长垣市357乡道</dd>
+                </div>
+              </dl>
+            </div>
+
+            <p class="quest-copy">今日目标：吃好、喝好、玩好<br />一起见证我们开启人生新副本</p>
+            <button class="game-button game-button--primary" type="button" data-next="2">查看婚礼副本</button>
+            <button class="text-button" type="button" data-back="0">返回上一页</button>
+            <p class="swipe-hint" aria-hidden="true"><span>↑</span> 也可以向上滑动</p>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="2" aria-labelledby="venueTitle" aria-hidden="true">
+          <div class="scene-shade scene-shade--strong"></div>
+          <div class="particles" aria-hidden="true"></div>
+          <div class="screen-content venue-content">
+            <p class="eyebrow">WEDDING LOCATION</p>
+            <h2 class="section-title" id="venueTitle">婚 礼 副 本</h2>
+
+            <div class="venue-window pixel-panel" aria-label="红金中式像素婚礼场地">
+              <div class="venue-window__image"></div>
+              <span class="venue-tag">现实场景 · 像素重制</span>
+            </div>
+
+            <div class="location-card pixel-panel">
+              <div class="map-illustration" aria-hidden="true">
+                <span class="road road--one"></span>
+                <span class="road road--two"></span>
+                <span class="road road--three"></span>
+                <span class="map-pin"><i></i></span>
+              </div>
+              <h3>任务地点</h3>
+              <p>河南省新乡市长垣市常村镇马南村</p>
+              <p>退役军人服务站南侧约270米</p>
+            </div>
+
+            <a class="game-button game-button--primary" href="https://surl.amap.com/jLkQBv01o53e" target="_blank" rel="noopener noreferrer">
+              打开高德地图导航
+            </a>
+            <button class="game-button game-button--secondary" type="button" data-next="3">继续任务</button>
+            <button class="text-button" type="button" data-back="1">返回上一页</button>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="3" aria-labelledby="finalTitle" aria-hidden="true">
+          <div class="scene-shade"></div>
+          <div class="particles" aria-hidden="true"></div>
+          <div class="confetti" id="confetti" aria-hidden="true"></div>
+          <div class="screen-content final-content">
+            <p class="eyebrow">MISSION CONFIRMATION</p>
+            <h2 class="section-title" id="finalTitle">任 务 确 认</h2>
+
+            <div class="final-characters">
+              <div class="couple-character couple-character--final" aria-hidden="true">
+                <img src="assets/images/couple.webp" alt="" />
+              </div>
+              <div class="cat-character cat-wave">
+                <img src="assets/images/cat.webp" alt="白银渐层猫咪像素角色" />
+              </div>
+              <div class="speech-bubble">喵～等你来！</div>
+            </div>
+
+            <div class="attendance-actions" aria-label="赴约选择">
+              <button class="game-button attendance-button" type="button" data-attend>欣然赴约</button>
+              <button class="game-button attendance-button" type="button" data-attend>一定到场</button>
+            </div>
+
+            <div class="final-signature pixel-panel">
+              <p class="names">于清旭 <span>&</span> 成冰冰</p>
+              <p>2026.09.16</p>
+              <p class="final-note">感谢您见证我们的良缘任务</p>
+            </div>
+
+            <div class="final-links">
+              <button class="text-button" type="button" data-back="0">重新查看</button>
+              <a class="text-button" href="https://surl.amap.com/jLkQBv01o53e" target="_blank" rel="noopener noreferrer">高德导航</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <audio id="bgm" src="assets/audio/wedding-bgm.m4a" preload="metadata" loop playsinline></audio>
+
+      <noscript>
+        <div class="noscript">
+          <h1>于清旭 &amp; 成冰冰</h1>
+          <p>2026年9月16日｜宾客11:00到场｜婚礼12:00开始</p>
+          <p>河南省新乡市长垣市常村镇马南村退役军人服务站南侧约270米</p>
+          <a href="https://surl.amap.com/jLkQBv01o53e">打开高德地图</a>
+        </div>
+      </noscript>
+    </div>
+    <script src="assets/js/app.js" defer></script>
+  </body>
+</html>
