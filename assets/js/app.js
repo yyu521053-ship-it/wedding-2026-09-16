@@ -41,6 +41,14 @@
     toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), duration);
   }
 
+  function normalizeShareUrl() {
+    const canonical = new URL(SHARE_URL);
+    const isCanonicalPage = window.location.origin === canonical.origin && window.location.pathname === canonical.pathname;
+    if (isCanonicalPage && (window.location.search || window.location.hash)) {
+      window.history.replaceState(null, document.title, SHARE_URL);
+    }
+  }
+
   function openShareGuide() {
     shareReturnFocus = document.activeElement;
     shareGuide.classList.add("is-visible");
@@ -315,6 +323,7 @@
     }, 280);
   }
 
+  normalizeShareUrl();
   addAmbientParticles();
   bindControls();
   bindGestures();
