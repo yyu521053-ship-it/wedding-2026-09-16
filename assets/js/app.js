@@ -15,12 +15,22 @@
   const bgm = document.getElementById("bgm");
   const toast = document.getElementById("toast");
   const confetti = document.getElementById("confetti");
+  const shareButton = document.getElementById("shareButton");
+  const shareGuide = document.getElementById("shareGuide");
+  const shareGuideClose = document.getElementById("shareGuideClose");
+  const copyShareLink = document.getElementById("copyShareLink");
+
+  const SHARE_URL = "https://yyu521053-ship-it.github.io/wedding-2026-09-16/";
+  const SHARE_TITLE = "于清旭 & 成冰冰的婚礼邀请";
+  const SHARE_TEXT = "2026年9月16日，诚邀您见证我们的婚礼。";
+  const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
 
   let currentScreen = 0;
   let audioUnlocked = false;
   let touchStart = null;
   let wheelLocked = false;
   let toastTimer = null;
+  let shareReturnFocus = null;
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
@@ -29,6 +39,65 @@
     toast.textContent = message;
     toast.classList.add("is-visible");
     toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), duration);
+  }
+
+  function openShareGuide() {
+    shareReturnFocus = document.activeElement;
+    shareGuide.classList.add("is-visible");
+    shareGuide.setAttribute("aria-hidden", "false");
+    window.setTimeout(() => shareGuideClose.focus(), 80);
+  }
+
+  function closeShareGuide() {
+    shareGuide.classList.remove("is-visible");
+    shareGuide.setAttribute("aria-hidden", "true");
+    if (shareReturnFocus instanceof HTMLElement) shareReturnFocus.focus();
+  }
+
+  function copyWithSelection(text) {
+    const field = document.createElement("textarea");
+    field.value = text;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.opacity = "0";
+    document.body.appendChild(field);
+    field.select();
+    const copied = document.execCommand("copy");
+    field.remove();
+    return copied;
+  }
+
+  async function copyShareUrl() {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(SHARE_URL);
+      } else if (!copyWithSelection(SHARE_URL)) {
+        throw new Error("copy command failed");
+      }
+      showToast("邀请函链接已复制", 1800);
+      return true;
+    } catch (error) {
+      showToast("复制失败，请长按浏览器地址复制", 2600);
+      return false;
+    }
+  }
+
+  async function shareInvitation() {
+    if (isWeChat) {
+      openShareGuide();
+      return;
+    }
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: SHARE_TITLE, text: SHARE_TEXT, url: SHARE_URL });
+        return;
+      } catch (error) {
+        if (error.name === "AbortError") return;
+      }
+    }
+
+    await copyShareUrl();
   }
 
   function setMusicUI(playing) {
@@ -125,6 +194,16 @@
     musicToggle.addEventListener("click", () => {
       if (bgm.paused) playMusic();
       else pauseMusic();
+    });
+
+    shareButton.addEventListener("click", shareInvitation);
+    copyShareLink.addEventListener("click", copyShareUrl);
+    shareGuide.querySelectorAll("[data-share-close]").forEach((button) => {
+      button.addEventListener("click", closeShareGuide);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && shareGuide.classList.contains("is-visible")) closeShareGuide();
     });
 
     document.querySelectorAll("[data-next]").forEach((button) => {

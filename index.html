@@ -78,7 +78,11 @@
               <span>开启婚礼任务</span>
               <span class="button-spark" aria-hidden="true">✦</span>
             </button>
-            <p class="gesture-hint">点击开启音乐与请帖</p>
+            <button class="game-button game-button--share" id="shareButton" type="button">
+              <span aria-hidden="true">↗</span>
+              <span>微信发送邀请函</span>
+            </button>
+            <p class="gesture-hint">先分享喜讯，再开启婚礼任务</p>
           </div>
         </section>
 
@@ -192,6 +196,41 @@
           </div>
         </section>
       </main>
+
+      <div
+        class="share-guide"
+        id="shareGuide"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="shareGuideTitle"
+        aria-hidden="true"
+      >
+        <button class="share-guide__backdrop" type="button" data-share-close aria-label="关闭分享提示"></button>
+        <span class="share-guide__arrow" aria-hidden="true">↗</span>
+        <section class="share-guide__card pixel-panel">
+          <button class="share-guide__close" id="shareGuideClose" type="button" data-share-close aria-label="关闭分享提示">×</button>
+          <p class="eyebrow">SHARE THE JOY</p>
+          <h2 id="shareGuideTitle">发送婚礼邀请函</h2>
+
+          <div class="share-preview">
+            <img src="assets/images/share-cover.jpg" alt="于清旭与成冰冰婚礼邀请函分享封面" />
+            <div>
+              <strong>于清旭 &amp; 成冰冰的婚礼邀请</strong>
+              <span>2026年9月16日，诚邀您见证我们的婚礼</span>
+            </div>
+          </div>
+
+          <ol class="share-steps">
+            <li>点击微信右上角的 <strong>···</strong></li>
+            <li>选择“发送给朋友”，即可发出邀请卡片</li>
+          </ol>
+
+          <button class="game-button game-button--secondary share-copy" id="copyShareLink" type="button">
+            复制邀请函链接
+          </button>
+          <p class="share-guide__note">想显示封面卡片，请从右上角转发，不要直接粘贴网址。</p>
+        </section>
+      </div>
 
       <div class="toast" id="toast" role="status" aria-live="polite"></div>
       <audio id="bgm" src="assets/audio/wedding-bgm.m4a" preload="metadata" loop playsinline></audio>

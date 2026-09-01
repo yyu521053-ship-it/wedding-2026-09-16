@@ -373,6 +373,18 @@ button {
   background: linear-gradient(180deg, #57202a, #360a12);
 }
 
+.game-button--share {
+  min-height: 46px;
+  margin-top: 11px;
+  color: #fff1ca;
+  border-color: #e2a73b;
+  background: linear-gradient(180deg, #785019, #472905);
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 229, 165, 0.12),
+    0 5px 0 #2b1502,
+    0 9px 18px rgba(21, 1, 5, 0.3);
+}
+
 .button-spark {
   color: var(--gold-300);
   animation: sparkle 1.2s ease-in-out infinite;
@@ -789,6 +801,150 @@ button {
   transform: translateY(0);
 }
 
+.share-guide {
+  position: absolute;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: calc(var(--safe-top) + 48px) 18px calc(var(--safe-bottom) + 20px);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.share-guide.is-visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.share-guide__backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: rgba(15, 1, 4, 0.84);
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+}
+
+.share-guide__card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 400px);
+  max-height: 100%;
+  padding: 25px 18px 18px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.share-guide__card h2 {
+  margin: 2px 0 16px;
+  color: var(--gold-300);
+  font-size: 23px;
+  letter-spacing: 0.08em;
+}
+
+.share-guide__arrow {
+  position: fixed;
+  z-index: 2;
+  top: calc(var(--safe-top) + 4px);
+  right: 17px;
+  color: var(--gold-300);
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+  filter: drop-shadow(0 3px 0 #3b0911);
+  animation: share-point 1.1s ease-in-out infinite;
+}
+
+.share-guide__close {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  padding: 0;
+  color: var(--gold-300);
+  border: 1px solid rgba(255, 229, 165, 0.45);
+  border-radius: 50%;
+  background: rgba(34, 3, 8, 0.72);
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.share-preview {
+  overflow: hidden;
+  border: 2px solid var(--gold-500);
+  background: #26050b;
+  box-shadow: 0 8px 20px rgba(17, 1, 5, 0.35);
+  text-align: left;
+}
+
+.share-preview img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+}
+
+.share-preview div {
+  display: grid;
+  gap: 4px;
+  padding: 11px 12px 12px;
+}
+
+.share-preview strong {
+  color: var(--ivory);
+  font-size: 15px;
+}
+
+.share-preview span {
+  color: rgba(255, 247, 223, 0.74);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.share-steps {
+  display: grid;
+  gap: 8px;
+  margin: 15px 0 0;
+  padding: 0;
+  color: var(--ivory);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.55;
+  list-style-position: inside;
+  text-align: left;
+}
+
+.share-steps strong {
+  color: var(--gold-300);
+  letter-spacing: 0.1em;
+}
+
+.share-copy {
+  width: 100%;
+}
+
+.share-guide__note {
+  margin: 13px 0 0;
+  color: rgba(255, 247, 223, 0.7);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.share-guide__close:focus-visible,
+.share-guide__backdrop:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
 .noscript {
   position: fixed;
   inset: 0;
@@ -852,6 +1008,11 @@ button {
   to { transform: scale(1.11) translateY(-3%); }
 }
 
+@keyframes share-point {
+  0%, 100% { transform: translate3d(-5px, 5px, 0); }
+  50% { transform: translate3d(2px, -2px, 0); }
+}
+
 @media (max-height: 700px) {
   .screen-content {
     padding-right: 16px;
@@ -876,6 +1037,33 @@ button {
     min-height: 47px;
     padding-top: 9px;
     padding-bottom: 9px;
+  }
+
+  .game-button--share {
+    min-height: 42px;
+    margin-top: 9px;
+  }
+
+  .share-guide {
+    padding-top: calc(var(--safe-top) + 39px);
+    padding-bottom: calc(var(--safe-bottom) + 12px);
+  }
+
+  .share-guide__card {
+    padding-top: 20px;
+  }
+
+  .share-guide__card h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  .share-steps {
+    margin-top: 10px;
+  }
+
+  .share-copy {
+    margin-top: 9px;
   }
 
   .mini-portrait {
