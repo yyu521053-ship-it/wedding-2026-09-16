@@ -15,22 +15,12 @@
   const bgm = document.getElementById("bgm");
   const toast = document.getElementById("toast");
   const confetti = document.getElementById("confetti");
-  const shareButton = document.getElementById("shareButton");
-  const shareGuide = document.getElementById("shareGuide");
-  const shareGuideClose = document.getElementById("shareGuideClose");
-  const copyShareNote = document.getElementById("copyShareNote");
-
-  const SHARE_URL = "https://yyu521053-ship-it.github.io/wedding-2026-09-16/";
-  const SHARE_TITLE = "于清旭 & 成冰冰的婚礼邀请";
-  const SHARE_TEXT = "2026年9月16日，诚邀您见证我们的婚礼";
-  const SHARE_NOTE_TEXT = `${SHARE_TITLE}\n${SHARE_TEXT}\n\n打开完整婚礼邀请函：\n${SHARE_URL}`;
 
   let currentScreen = 0;
   let audioUnlocked = false;
   let touchStart = null;
   let wheelLocked = false;
   let toastTimer = null;
-  let shareReturnFocus = null;
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
@@ -39,59 +29,6 @@
     toast.textContent = message;
     toast.classList.add("is-visible");
     toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), duration);
-  }
-
-  function normalizeShareUrl() {
-    const canonical = new URL(SHARE_URL);
-    const isCanonicalPage = window.location.origin === canonical.origin && window.location.pathname === canonical.pathname;
-    if (isCanonicalPage && (window.location.search || window.location.hash)) {
-      window.history.replaceState(null, document.title, SHARE_URL);
-    }
-  }
-
-  function openShareGuide() {
-    shareReturnFocus = document.activeElement;
-    shareGuide.classList.add("is-visible");
-    shareGuide.setAttribute("aria-hidden", "false");
-    window.setTimeout(() => shareGuideClose.focus(), 80);
-  }
-
-  function closeShareGuide() {
-    shareGuide.classList.remove("is-visible");
-    shareGuide.setAttribute("aria-hidden", "true");
-    if (shareReturnFocus instanceof HTMLElement) shareReturnFocus.focus();
-  }
-
-  function copyWithSelection(text) {
-    const field = document.createElement("textarea");
-    field.value = text;
-    field.setAttribute("readonly", "");
-    field.style.position = "fixed";
-    field.style.opacity = "0";
-    document.body.appendChild(field);
-    field.select();
-    const copied = document.execCommand("copy");
-    field.remove();
-    return copied;
-  }
-
-  async function copyShareNoteText() {
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(SHARE_NOTE_TEXT);
-      } else if (!copyWithSelection(SHARE_NOTE_TEXT)) {
-        throw new Error("copy command failed");
-      }
-      showToast("微信邀请文案已复制", 1800);
-      return true;
-    } catch (error) {
-      showToast("复制失败，请长按选中文案复制", 2600);
-      return false;
-    }
-  }
-
-  function shareInvitation() {
-    openShareGuide();
   }
 
   function setMusicUI(playing) {
@@ -188,16 +125,6 @@
     musicToggle.addEventListener("click", () => {
       if (bgm.paused) playMusic();
       else pauseMusic();
-    });
-
-    shareButton.addEventListener("click", shareInvitation);
-    copyShareNote.addEventListener("click", copyShareNoteText);
-    shareGuide.querySelectorAll("[data-share-close]").forEach((button) => {
-      button.addEventListener("click", closeShareGuide);
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && shareGuide.classList.contains("is-visible")) closeShareGuide();
     });
 
     document.querySelectorAll("[data-next]").forEach((button) => {
@@ -309,7 +236,6 @@
     }, 280);
   }
 
-  normalizeShareUrl();
   addAmbientParticles();
   bindControls();
   bindGestures();

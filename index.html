@@ -78,11 +78,7 @@
               <span>开启婚礼任务</span>
               <span class="button-spark" aria-hidden="true">✦</span>
             </button>
-            <button class="game-button game-button--share" id="shareButton" type="button">
-              <span aria-hidden="true">✦</span>
-              <span>制作微信邀请卡片</span>
-            </button>
-            <p class="gesture-hint">先制作卡片，再开启婚礼任务</p>
+            <p class="gesture-hint">点击开启音乐与请帖</p>
           </div>
         </section>
 
@@ -196,55 +192,6 @@
           </div>
         </section>
       </main>
-
-      <div
-        class="share-guide"
-        id="shareGuide"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="shareGuideTitle"
-        aria-hidden="true"
-      >
-        <button class="share-guide__backdrop" type="button" data-share-close aria-label="关闭分享提示"></button>
-        <section class="share-guide__card pixel-panel">
-          <button class="share-guide__close" id="shareGuideClose" type="button" data-share-close aria-label="关闭分享提示">×</button>
-          <p class="eyebrow">SHARE THE JOY</p>
-          <h2 id="shareGuideTitle">制作微信邀请卡片</h2>
-
-          <div class="share-preview">
-            <img src="assets/images/share-cover.jpg" alt="于清旭与成冰冰婚礼邀请函分享封面" />
-          </div>
-
-          <div class="share-note-copy" aria-label="待复制的微信邀请文案">
-            <strong>于清旭 &amp; 成冰冰的婚礼邀请</strong>
-            <span>2026年9月16日，诚邀您见证我们的婚礼</span>
-            <span class="share-note-copy__label">打开完整婚礼邀请函：</span>
-            <span class="share-note-copy__url">https://yyu521053-ship-it.github.io/wedding-2026-09-16/</span>
-          </div>
-
-          <div class="share-note-actions">
-            <a
-              class="game-button game-button--secondary share-save"
-              id="saveShareCover"
-              href="assets/images/share-cover.jpg"
-              target="_blank"
-              rel="noopener"
-              download="于清旭与成冰冰婚礼邀请封面.jpg"
-            >打开红金封面（长按保存）</a>
-            <button class="game-button game-button--secondary share-copy" id="copyShareNote" type="button">
-              复制微信邀请文案
-            </button>
-          </div>
-
-          <ol class="share-steps">
-            <li>打开上方红金封面并长按保存</li>
-            <li>打开微信“我 → 收藏”，点击右上角“＋”新建笔记</li>
-            <li>先插入封面，再粘贴邀请文案并保存</li>
-            <li>从笔记右上角“···”发送给朋友</li>
-          </ol>
-          <p class="share-guide__note">只需制作一次，之后可以反复发送这张微信笔记卡片。</p>
-        </section>
-      </div>
 
       <div class="toast" id="toast" role="status" aria-live="polite"></div>
       <audio id="bgm" src="assets/audio/wedding-bgm.m4a" preload="metadata" loop playsinline></audio>
