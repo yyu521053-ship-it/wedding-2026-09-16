@@ -18,12 +18,12 @@
   const shareButton = document.getElementById("shareButton");
   const shareGuide = document.getElementById("shareGuide");
   const shareGuideClose = document.getElementById("shareGuideClose");
-  const copyShareLink = document.getElementById("copyShareLink");
+  const copyShareNote = document.getElementById("copyShareNote");
 
   const SHARE_URL = "https://yyu521053-ship-it.github.io/wedding-2026-09-16/";
   const SHARE_TITLE = "于清旭 & 成冰冰的婚礼邀请";
-  const SHARE_TEXT = "2026年9月16日，诚邀您见证我们的婚礼。";
-  const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
+  const SHARE_TEXT = "2026年9月16日，诚邀您见证我们的婚礼";
+  const SHARE_NOTE_TEXT = `${SHARE_TITLE}\n${SHARE_TEXT}\n\n打开完整婚礼邀请函：\n${SHARE_URL}`;
 
   let currentScreen = 0;
   let audioUnlocked = false;
@@ -75,37 +75,23 @@
     return copied;
   }
 
-  async function copyShareUrl() {
+  async function copyShareNoteText() {
     try {
       if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(SHARE_URL);
-      } else if (!copyWithSelection(SHARE_URL)) {
+        await navigator.clipboard.writeText(SHARE_NOTE_TEXT);
+      } else if (!copyWithSelection(SHARE_NOTE_TEXT)) {
         throw new Error("copy command failed");
       }
-      showToast("邀请函链接已复制", 1800);
+      showToast("微信邀请文案已复制", 1800);
       return true;
     } catch (error) {
-      showToast("复制失败，请长按浏览器地址复制", 2600);
+      showToast("复制失败，请长按选中文案复制", 2600);
       return false;
     }
   }
 
-  async function shareInvitation() {
-    if (isWeChat) {
-      openShareGuide();
-      return;
-    }
-
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: SHARE_TITLE, text: SHARE_TEXT, url: SHARE_URL });
-        return;
-      } catch (error) {
-        if (error.name === "AbortError") return;
-      }
-    }
-
-    await copyShareUrl();
+  function shareInvitation() {
+    openShareGuide();
   }
 
   function setMusicUI(playing) {
@@ -205,7 +191,7 @@
     });
 
     shareButton.addEventListener("click", shareInvitation);
-    copyShareLink.addEventListener("click", copyShareUrl);
+    copyShareNote.addEventListener("click", copyShareNoteText);
     shareGuide.querySelectorAll("[data-share-close]").forEach((button) => {
       button.addEventListener("click", closeShareGuide);
     });

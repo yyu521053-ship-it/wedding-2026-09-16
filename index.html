@@ -79,10 +79,10 @@
               <span class="button-spark" aria-hidden="true">✦</span>
             </button>
             <button class="game-button game-button--share" id="shareButton" type="button">
-              <span aria-hidden="true">↗</span>
-              <span>微信发送邀请函</span>
+              <span aria-hidden="true">✦</span>
+              <span>制作微信邀请卡片</span>
             </button>
-            <p class="gesture-hint">先分享喜讯，再开启婚礼任务</p>
+            <p class="gesture-hint">先制作卡片，再开启婚礼任务</p>
           </div>
         </section>
 
@@ -206,29 +206,43 @@
         aria-hidden="true"
       >
         <button class="share-guide__backdrop" type="button" data-share-close aria-label="关闭分享提示"></button>
-        <span class="share-guide__arrow" aria-hidden="true">↗</span>
         <section class="share-guide__card pixel-panel">
           <button class="share-guide__close" id="shareGuideClose" type="button" data-share-close aria-label="关闭分享提示">×</button>
           <p class="eyebrow">SHARE THE JOY</p>
-          <h2 id="shareGuideTitle">发送婚礼邀请函</h2>
+          <h2 id="shareGuideTitle">制作微信邀请卡片</h2>
 
           <div class="share-preview">
             <img src="assets/images/share-cover.jpg" alt="于清旭与成冰冰婚礼邀请函分享封面" />
-            <div>
-              <strong>于清旭 &amp; 成冰冰的婚礼邀请</strong>
-              <span>2026年9月16日，诚邀您见证我们的婚礼</span>
-            </div>
+          </div>
+
+          <div class="share-note-copy" aria-label="待复制的微信邀请文案">
+            <strong>于清旭 &amp; 成冰冰的婚礼邀请</strong>
+            <span>2026年9月16日，诚邀您见证我们的婚礼</span>
+            <span class="share-note-copy__label">打开完整婚礼邀请函：</span>
+            <span class="share-note-copy__url">https://yyu521053-ship-it.github.io/wedding-2026-09-16/</span>
+          </div>
+
+          <div class="share-note-actions">
+            <a
+              class="game-button game-button--secondary share-save"
+              id="saveShareCover"
+              href="assets/images/share-cover.jpg"
+              target="_blank"
+              rel="noopener"
+              download="于清旭与成冰冰婚礼邀请封面.jpg"
+            >打开红金封面（长按保存）</a>
+            <button class="game-button game-button--secondary share-copy" id="copyShareNote" type="button">
+              复制微信邀请文案
+            </button>
           </div>
 
           <ol class="share-steps">
-            <li>点击微信右上角的 <strong>···</strong></li>
-            <li>选择“发送给朋友”，即可发出邀请卡片</li>
+            <li>打开上方红金封面并长按保存</li>
+            <li>打开微信“我 → 收藏”，点击右上角“＋”新建笔记</li>
+            <li>先插入封面，再粘贴邀请文案并保存</li>
+            <li>从笔记右上角“···”发送给朋友</li>
           </ol>
-
-          <button class="game-button game-button--secondary share-copy" id="copyShareLink" type="button">
-            复制邀请函链接
-          </button>
-          <p class="share-guide__note">想显示封面卡片，请从右上角转发，不要直接粘贴网址。</p>
+          <p class="share-guide__note">只需制作一次，之后可以反复发送这张微信笔记卡片。</p>
         </section>
       </div>
 
